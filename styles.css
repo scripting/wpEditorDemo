@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
+
+:root {
+	--font-product-name: "Archivo Black";
+	--bodytext-font-family: "Ubuntu";
+	--bodytext-font-size: 16px;
+	--bodytext-line-height: 150%;
+	--min-height-msgtext: 200px;
+	--min-width-msgtext: 550px;
+	}
+
+body {
+	background-color: white;
+	}
+.divPageBody {
+	width: 750px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 90px;
+	margin-bottom: 400px;
+	font-family: Arial, sans-serif;
+	font-size: 18px;
+	}
+.divLoggedInMessage {
+	margin-top: 10px;
+	text-align: center;
+	}
+.spMenuProductName {
+	font-family: var(--font-product-name);
+	font-size: 32px;
+	letter-spacing: -1px;
+	margin-top: 4px;
+	opacity: 0.7;
+	color: black;
+	}
+.divSignedOff {
+	margin-top: 200px;
+	line-height: 200%;
+	text-align: center;
+	}
+.divEditor {
+	width: 100%;
+	border: 1px solid silver;
+	background-color: whitesmoke;
+	}
+.divEditor textarea {
+	width: 100%;
+	font-family: var(--bodytext-font-family);
+	font-size: var(--bodytext-font-size);
+	line-height: var(--bodytext-line-height);
+	padding-left: 5px; /* 2/25/25 by DW */
+	padding-right: 2px;
+	min-height:  var(--min-height-msgtext);
+	min-width:  var(--min-width-msgtext);
+	border: 1px solid gainsboro;
+	overflow: hidden;
+	background-color: white;
+	margin-bottom: 0;
+	}
+.divEditor .editing {
+	min-height:  var(--min-height-msgtext);
+	}
+.divEditor .editing:focus {
+	border-color: rgba(82, 168, 236, 0.8);
+	outline: 0;
+	outline: thin dotted \9;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
+	background-color: white;
+	}
+
+.divButtons {
+	margin-top: 10px;
+	text-align: right;
+	}
+
+.divSitelist {
+	font-size: 15px;
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid silver;
+	background-color: white;
+	padding: 3px;
+	}
+.divSitelist td {
+	min-width: 100px;
+	}
+.divSitelist .spSitename {
+	cursor: pointer;
+	margin-right: 1em;
+	}
+.divSitelist .spSitedate {
+	margin-right: 1em;
+	}
+.divSitelist td:hover {
+	text-decoration: underline;
+	}
+
+.divLeftJustifiedButtons {
+	float: left;
+	}
+.spChooseSite {
+	float: left;
+	}
+.divLeftCell {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	}
+.divRightCell {
+	width: 270px;
+	text-align: right;
+	float: right;
+	margin-top: 5px;
+	}
+
+.divButtonLine {
+	display: flex;
+	width: 750px;
+	justify-content: space-between;
+	margin-top: 5px;
+	font-size: 14px;
+	}
+.divLeftButtons {
+	flex: 1;
+	}
+.divRightButtons {
+	flex: 1;
+	text-align: right;
+	}
+
+.spLastSiteChosen {
+	display: inline-block;
+	margin-top: 3px;
+	margin-left: 3px;
+	}
+
+.divDraftDataViewer {
+	margin-top: 10px;
+	width: 100%;
+	white-space: pre;
+	font-size: 12px;
+	line-height: 18px;
+	border: 1px solid silver;
+	overflow: auto;
+	}
+.divEditorContainer {
+	width: 100%;
+	flex: 0 0 750px;
+	}
+.divEditorContainer .divTitle {
+	font-weight: bold;
+	margin-bottom: 10px;
+	}
+
+
+
+/* styles for phone, tablet */
+	@media screen and (max-width: 1024px) {
+		.divPageBody {
+			width: 95%;
+			margin-top: 80px;
+			}
+		}
+	

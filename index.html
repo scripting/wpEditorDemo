@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<title>DEMOLAND</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="//s3.amazonaws.com/scripting.com/code/includes/jquery-1.9.1.min.js"></script>
+<link href="//s3.amazonaws.com/scripting.com/code/includes/bootstrap.css" rel="stylesheet">
+<script src="//s3.amazonaws.com/scripting.com/code/includes/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="//s3.amazonaws.com/scripting.com/code/fontawesome/css/all.css">
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Ubuntu:400,400i,500i,700" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Rancho" rel="stylesheet">
+
+<script src="//s3.amazonaws.com/scripting.com/code/includes/basic/code.js?x=2"></script>
+<link href="//s3.amazonaws.com/scripting.com/code/includes/basic/styles.css" rel="stylesheet" type="text/css">
+
+		<script src="//s3.amazonaws.com/scripting.com/code/wpidentity/client/api2.js?x=0"></script>
+		<script src="code.js?x=4"></script>
+		<link rel="stylesheet" href="styles.css?x=5"/>
+		</head>
+	<body>
+		<div class="divMenubar" id="idMenubar">
+			<div class="topbar-wrapper" style="z-index: 5;">
+				<div class="navbar navbar-fixed-top" data-dropdown="dropdown">
+					<div class="navbar-inner">
+						<div class="container">
+							<a class="brand" href="/" title="A simple text editor that plugs into wpIdentity.">
+								<span class="spMenuProductName">DEMOLAND</span>
+								</a>
+							<ul class="nav">
+								<li class="dropdown" id="idMainMenu"> 
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Menu&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a onclick="newDraftCommand ();">New draft..</a></li>
+										<li><a onclick="setTitleCommand ();">Set title..</a></li>
+										<li class="divider"></li>
+										<li><a href="https://github.com/scripting/wpIdentity">GitHub repo</a></li>
+										<li class="divider"></li>
+										<li><a onclick="logoffWordpressCommand ();">Log off WordPress.com</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div class="divPageBody">
+			<div class="divSignedOn" id="idSignedOn" style="display: none;">
+				
+				<div class="divEditorContainer">
+					<div class="divTitle">
+						</div>
+					<div class="divEditor">
+						</div>
+					<div class="divButtonLine">
+						<div class="divLeftButtons">
+							<button id="idNewPostButton" class="btn btnPost" type="button" onclick="newDraftCommand ()">
+								New Post..
+								</button>
+							<button id="idChooseSiteButton" class="btn btnPost" type="button" onclick="chooseSiteButtonClick ()">
+								Choose site
+								</button>
+							
+							<div class="spLastSiteChosen"></div>
+							
+							</div>
+						<div class="divRightButtons">
+							<button id="idViewPostButton" class="btn btnPost" type="button" onclick="viewPostCommand ()">
+								View Post..
+								</button>
+							<button id="idPostButton" class="btn btnPost" type="button" onclick="publishButtonClick ()">
+								Publish
+								</button>
+							</div>
+						</div>
+					</div>
+				<div class="divDraftDataViewer">
+					</div>
+				
+				
+				
+				<div class="divSitelistContainer">
+					</div>
+				</div>
+			<div class="divSignedOff" id="idSignedOff" style="display: none;">
+				<p>Click the button to log on to WordPress.com.</p>
+				<p><img alt="" src="//s0.wp.com/i/wpcc-button.png" width="231" onclick="myWordpress.connectWithWordpress ()"></p>
+				</div>
+			</div>
+		<script>
+			$(document).ready (function () {
+				startup ();
+				});
+			</script>
+		</body>
+	</html>

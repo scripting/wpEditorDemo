@@ -23,7 +23,6 @@ var globals = {
 	}
 
 
-
 function runModalDialog (userOptions, callback) { //12/26/24 by DW
 	var options = {
 		whereToAppend: $("body"),
@@ -178,6 +177,7 @@ function newDraft () {
 		categories: [],
 		idPost: undefined,
 		idSite: undefined,
+		flEnablePublish: false,
 		whichEditor: "markdown",
 		author: {
 			id: theUserInfo.idUser,
@@ -261,13 +261,6 @@ function publishDraft (draftInfo, callback) {
 		}
 	}
 
-function setDraftinfoContent (mdtext) { 
-	const theDraft = globals.theDraft;
-	theDraft.content = mdtext;
-	theDraft.contentType = "markdown";
-	theDraft.flEnablePublish = true;
-	draftChanged (theDraft);
-	}
 
 function newTextarea () {
 	const theEditor = $("<textarea></textarea>");
@@ -284,6 +277,13 @@ function newTextarea () {
 		});
 	
 	function textChanged () { //10/9/25 by DW
+		function setDraftinfoContent (mdtext) { 
+			const theDraft = globals.theDraft;
+			theDraft.content = mdtext;
+			theDraft.contentType = "markdown";
+			theDraft.flEnablePublish = true;
+			draftChanged (theDraft);
+			}
 		setDraftinfoContent (theEditor.val ());
 		fixHeight (theEditor);
 		draftChanged ();
@@ -397,6 +397,7 @@ function newDraftCommand () {
 		});
 	}
 function chooseSiteButtonClick () {
+	console.log ("chooseSiteButtonClick");
 	function sortSiteList (theSites, sortBy="name", flReverseSort=false) {
 		theSites.sort (function (a, b) {
 			switch (sortBy) {
@@ -430,7 +431,6 @@ function chooseSiteButtonClick () {
 			});
 		}
 	function viewSitelist (userOptions) {
-		console.log ("viewSitelist");
 		var options = {
 			whereToAppend: $(".divSitelistContainer"),
 			sortBy: "name",
@@ -530,7 +530,7 @@ function chooseSiteButtonClick () {
 	const dialogBody = viewSitelist ();
 	const dialogOptions = {
 		dialogBody,
-		prompt: "Choose a site..",
+		prompt: "Choose a site for this post..",
 		flOkButton: false,
 		flCancelButton: false
 		};
@@ -578,7 +578,7 @@ function setTitleCommand () {
 	}
 function viewPostCommand () {
 	if (globals.theDraft.url === undefined) {
-		alertDialog ("Can't open the post because it hasn't been published yet.");
+		alertDialog ("Can't view the post because it hasn't been published yet.");
 		}
 	else {
 		window.open (globals.theDraft.url);
@@ -592,34 +592,45 @@ function updateStatus () {
 			$(nameObject).text (theText);
 			}
 		}
+	function enablePublishButton () {
+		var flDisabled = getBoolean (globals.theDraft.flEnablePublish) ? false : true;
+		if (appPrefs.idLastSiteChosen === undefined) {
+			flDisabled = true;
+			}
+		$("#idPostButton").prop ("disabled", flDisabled)
+		}
+	function enableViewPostButton ()  {
+		const flDisabled = getBoolean (globals.theDraft.url !== undefined) ? false : true;
+		$("#idViewPostButton").prop ("disabled", flDisabled)
+		}
 	const siteName = (appPrefs.nameLastSiteChosen === undefined) ? "Choose site.." : "Site: " + appPrefs.nameLastSiteChosen;
 	setTextItem ("#idChooseSiteButton", siteName);
 	updateDraftViewer ();
 	updateTitleViewer ();
 	
-	
-	
+	enablePublishButton ();
+	enableViewPostButton ();
 	
 	
 	}
 
+function everyMinute () {
+	}
+function everySecond () {
+	updateForLogin ();
+	updateStatus ();
+	checkPrefsChanged ();
+	if (globals.flDraftChanged) { //4/5/24 by DW
+		if (secondsSince (globals.autosaveClock) > appPrefs.minSecsBetwSave) {
+			globals.flDraftChanged = false;
+			saveDraft (globals.theDraft);
+			updateDraftViewer ();
+			}
+		}
+	}
 
 function startup () {
 	console.log ("startup");
-	function everyMinute () {
-		}
-	function everySecond () {
-		updateForLogin ();
-		updateStatus ();
-		checkPrefsChanged ();
-		if (globals.flDraftChanged) { //4/5/24 by DW
-			if (secondsSince (globals.autosaveClock) > appPrefs.minSecsBetwSave) {
-				globals.flDraftChanged = false;
-				saveDraft (globals.theDraft);
-				updateDraftViewer ();
-				}
-			}
-		}
 	const wpOptions = {
 		serverAddress: "https://wordland.dev/",
 		urlChatLogSocket: "wss://wordland.dev/",

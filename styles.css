@@ -7,6 +7,7 @@
 	--bodytext-line-height: 150%;
 	--min-height-msgtext: 200px;
 	--min-width-msgtext: 550px;
+	--debugging-border: 1px dotted lavender;  /* 10/13/24 by DW */
 	}
 
 body {
@@ -148,12 +149,34 @@ body {
 	width: 100%;
 	flex: 0 0 750px;
 	}
-.divEditorContainer .divTitle {
-	font-weight: bold;
-	margin-bottom: 10px;
+
+.divEditorContainer .divTopLine {
+	display: flex;
+	width: 100%;
 	}
-
-
+.divEditorContainer .divTopLine .divTitle {
+	width: 500px;
+	flex: 0 0 500px;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 3px;
+	height: 21px;
+	margin-bottom: 4px;
+	border: var(--debugging-border);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	}
+.divEditorContainer .divTopLine .divTitle:hover {
+	cursor: pointer;
+	}
+.divEditorContainer .divTopLine .divStatus {
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-align: right;
+	border: var(--debugging-border);
+	}
 
 /* styles for phone, tablet */
 	@media screen and (max-width: 1024px) {

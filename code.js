@@ -359,23 +359,6 @@ function updateTitleViewer () {
 function userIsSignedIn () {
 	return (myWordpress.userIsSignedIn ());
 	}
-function updateForLogin (flConnected=userIsSignedIn ()) {
-	var idActive, idOther;
-	if (flConnected) {
-		idActive = "#idSignedOn";
-		idOther = "#idSignedOff";
-		}
-	else {
-		idActive = "#idSignedOff";
-		idOther = "#idSignedOn";
-		}
-	if ($(idActive).css ("display") != "block") {
-		$(idActive).css ("display", "block")
-		}
-	if ($(idOther).css ("display") != "none") {
-		$(idOther).css ("display", "none")
-		}
-	}
 
 function logOffWordpressCommand () {
 	confirmDialog ("Log off WordPress.com?", function () {
@@ -384,7 +367,7 @@ function logOffWordpressCommand () {
 	}
 function newDraftCommand () {
 	console.log ("newDraftCommand");
-	confirmDialog ("Create a new draft?", function () {
+	confirmDialog ("Create a new post?", function () {
 		globals.theDraft = newDraft ();
 		appPrefs.idLastDraft = undefined;
 		appPrefs.idLastSiteChosen = undefined;
@@ -586,6 +569,23 @@ function viewPostCommand () {
 	}
 
 
+function updateForLogin (flConnected=userIsSignedIn ()) {
+	var idActive, idOther;
+	if (flConnected) {
+		idActive = "#idSignedOn";
+		idOther = "#idSignedOff";
+		}
+	else {
+		idActive = "#idSignedOff";
+		idOther = "#idSignedOn";
+		}
+	if ($(idActive).css ("display") != "block") {
+		$(idActive).css ("display", "block")
+		}
+	if ($(idOther).css ("display") != "none") {
+		$(idOther).css ("display", "none")
+		}
+	}
 function updateStatus () {
 	function setTextItem (nameObject, theText) {
 		if ($(nameObject).text () != theText) {
@@ -642,12 +642,12 @@ function startup () {
 			alertDialog ("Can't run the app because there was an error starting up.");
 			}
 		else {
-			updateForLogin (); 
 			if (myWordpress.userIsSignedIn ()) {
 				readPrefs (function (err, theSavedPrefs) { 
 					if (err) {
 						console.log ("startup: Can't run the app because there was an error loading your preferences.");
 						$("body").text ("");
+						updateForLogin (); 
 						}
 					else {
 						appPrefs.ctStarts++;
@@ -657,6 +657,8 @@ function startup () {
 						
 						const theTextarea = newTextarea ();
 						$(".divEditor").append (theTextarea);
+						
+						updateForLogin (); 
 						
 						if (appPrefs.idLastDraft !== undefined) {
 							readDraft (appPrefs.idLastDraft, function (err, theDraft) {
@@ -671,10 +673,18 @@ function startup () {
 							updateDraftViewer ();
 							updateTitleViewer ();
 							}
+						
+						$(".divTitle").click (function () {
+							setTitleCommand ();
+							});
+						
 						self.setInterval (everySecond, 1000); 
 						runEveryMinute (everyMinute);
 						}
 					});
+				}
+			else {
+				updateForLogin (); 
 				}
 			}
 		});

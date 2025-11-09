@@ -44,6 +44,7 @@ body {
 	width: 100%;
 	border: 1px solid silver;
 	background-color: whitesmoke;
+	min-height:  150px;
 	}
 .divEditor textarea {
 	width: 100%;
@@ -162,7 +163,6 @@ body {
 	padding: 3px;
 	height: 21px;
 	margin-bottom: 4px;
-	border: var(--debugging-border);
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -175,7 +175,6 @@ body {
 	white-space: nowrap;
 	overflow: hidden;
 	text-align: right;
-	border: var(--debugging-border);
 	}
 
 .divLeftButtons button {

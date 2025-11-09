@@ -36,7 +36,7 @@ I want this to be a big thing. It's a big part of what I did with WordLand, was 
 
 This repo contains the source code to a very plain textarea that you can edit text in. 
 
-You can try the demo out here: <a href="https://demo.wpidentity.com/">demo.wpidentity.com</a>.
+You can try the demo here: <a href="https://demo.wpidentity.org/">demo.wpidentity.org</a>.
 
 To get started click the button to log on to WordPress.com. 
 

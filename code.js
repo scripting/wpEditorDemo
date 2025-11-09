@@ -19,7 +19,8 @@ var globals = {
 	theDraft: undefined,
 	autosaveClock: new Date (0),
 	siteList: undefined,
-	theEditor: undefined
+	theEditor: undefined,
+	savingStatusMessage: ""
 	}
 
 
@@ -261,21 +262,20 @@ function publishDraft (draftInfo, callback) {
 		}
 	}
 
-
-function newTextarea () {
+function newTextarea (userOptions) {
+	var options = {
+		whereToAppend: undefined
+		}
+	mergeOptions (userOptions, options);
+	
 	const theEditor = $("<textarea></textarea>");
+	options.whereToAppend.append (theEditor);
+	globals.theEditor = theEditor;
+	
 	function fixHeight (div) {
 		div.css ("height", "auto"); //grow or shrink the box based on what has changed in the text 
 		div.css ("height", div.prop ("scrollHeight") + "px"); 
 		}
-	theEditor.on ("focusEditor", function () {
-		theEditor.focus ();
-		})
-	
-	theEditor.click (function () {
-		theEditor.addClass ("editing");
-		});
-	
 	function textChanged () { //10/9/25 by DW
 		function setDraftinfoContent (mdtext) { 
 			const theDraft = globals.theDraft;
@@ -288,6 +288,13 @@ function newTextarea () {
 		fixHeight (theEditor);
 		draftChanged ();
 		}
+	
+	theEditor.on ("focusEditor", function () {
+		theEditor.focus ();
+		})
+	theEditor.click (function () {
+		theEditor.addClass ("editing");
+		});
 	theEditor.on ("input", function () { //the content we're editing has changed
 		textChanged ();
 		});
@@ -312,7 +319,11 @@ function newTextarea () {
 				}
 			}
 		})
-	globals.theEditor = theEditor;
+	theEditor.on ("set", function (event, theText) { 
+		theEditor.val (theText); //xxx
+		textChanged ();
+		});
+	
 	return (theEditor);
 	}
 
@@ -356,9 +367,6 @@ function updateTitleViewer () {
 		}
 	}
 
-function userIsSignedIn () {
-	return (myWordpress.userIsSignedIn ());
-	}
 
 function logOffWordpressCommand () {
 	confirmDialog ("Log off WordPress.com?", function () {
@@ -519,10 +527,9 @@ function chooseSiteButtonClick () {
 		};
 	const theDialog = runModalDialog (dialogOptions);
 	}
-function newPostButtonClick () {
-	}
 function publishButtonClick () {
 	const theDraft = globals.theDraft;
+	globals.savingStatusMessage = "PUBLISHING";
 	publishDraft (theDraft, function (err, theNewPost) {
 		if (err) {
 			alertDialog ("Couldn't publish because =\"" + err.message + ".\"");
@@ -542,6 +549,7 @@ function publishButtonClick () {
 					}
 				});
 			}
+		globals.savingStatusMessage = undefined; 
 		});
 	}
 function setTitleCommand () {
@@ -568,9 +576,11 @@ function viewPostCommand () {
 		}
 	}
 
-
-function updateForLogin (flConnected=userIsSignedIn ()) {
+function updateForLogin (flConnected) {
 	var idActive, idOther;
+	if (flConnected === undefined) {
+		flConnected = myWordpress.userIsSignedIn ()
+		}
 	if (flConnected) {
 		idActive = "#idSignedOn";
 		idOther = "#idSignedOff";
@@ -592,6 +602,21 @@ function updateStatus () {
 			$(nameObject).text (theText);
 			}
 		}
+	function updateSavingStatus () {
+		var theText;
+		if (globals.savingStatusMessage === undefined) {
+			if (globals.flDraftChanged) {
+				theText = "NOT SAVED";
+				}
+			else {
+				theText = "SAVED";
+				}
+			}
+		else {
+			theText = globals.savingStatusMessage;
+			}
+		setTextItem (".divSavingMessage", theText);
+		}
 	function enablePublishButton () {
 		var flDisabled = getBoolean (globals.theDraft.flEnablePublish) ? false : true;
 		if (appPrefs.idLastSiteChosen === undefined) {
@@ -607,6 +632,7 @@ function updateStatus () {
 	setTextItem ("#idChooseSiteButton", siteName);
 	updateDraftViewer ();
 	updateTitleViewer ();
+	updateSavingStatus ();
 	
 	enablePublishButton ();
 	enableViewPostButton ();
@@ -655,15 +681,19 @@ function startup () {
 						prefsChanged ();
 						
 						
-						const theTextarea = newTextarea ();
-						$(".divEditor").append (theTextarea);
+						const options = {
+							whereToAppend: $(".divEditor")
+							}
+						const theTextarea = newTextarea (options);
 						
 						updateForLogin (); 
 						
 						if (appPrefs.idLastDraft !== undefined) {
 							readDraft (appPrefs.idLastDraft, function (err, theDraft) {
 								globals.theDraft = theDraft;
-								theTextarea.val (theDraft.content);
+								
+								theTextarea.trigger ("set", theDraft.content)
+								
 								updateDraftViewer ();
 								updateTitleViewer ();
 								});
@@ -676,6 +706,9 @@ function startup () {
 						
 						$(".divTitle").click (function () {
 							setTitleCommand ();
+							});
+						$(".btn").click (function () {
+							this.blur ();
 							});
 						
 						self.setInterval (everySecond, 1000); 

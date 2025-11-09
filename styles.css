@@ -5,9 +5,10 @@
 	--bodytext-font-family: "Ubuntu";
 	--bodytext-font-size: 16px;
 	--bodytext-line-height: 150%;
-	--min-height-msgtext: 200px;
+	--min-height-msgtext: 150px;
 	--min-width-msgtext: 550px;
 	--debugging-border: 1px dotted lavender;  /* 10/13/24 by DW */
+	--prompt-color: slategray;
 	}
 
 body {
@@ -51,15 +52,14 @@ body {
 	line-height: var(--bodytext-line-height);
 	padding-left: 5px; /* 2/25/25 by DW */
 	padding-right: 2px;
-	min-height:  var(--min-height-msgtext);
-	min-width:  var(--min-width-msgtext);
+	min-height:  150px;
+	min-width:  550px;
 	border: 1px solid gainsboro;
 	overflow: hidden;
 	background-color: white;
 	margin-bottom: 0;
 	}
 .divEditor .editing {
-	min-height:  var(--min-height-msgtext);
 	}
 .divEditor .editing:focus {
 	border-color: rgba(82, 168, 236, 0.8);
@@ -137,11 +137,11 @@ body {
 	}
 
 .divDraftDataViewer {
-	margin-top: 10px;
+	margin-top: 25px;
 	width: 100%;
 	white-space: pre;
-	font-size: 12px;
-	line-height: 18px;
+	font-size: 14px;
+	line-height: 20px;
 	border: 1px solid silver;
 	overflow: auto;
 	}
@@ -176,6 +176,19 @@ body {
 	overflow: hidden;
 	text-align: right;
 	border: var(--debugging-border);
+	}
+
+.divLeftButtons button {
+	margin-right: 10px;
+	}
+.divRightButtons button {
+	margin-left: 10px;
+	}
+
+.divStatus .divSavingMessage {
+	font-size: 13px;
+	color: var(--prompt-color);
+	margin-top: 10px;
 	}
 
 /* styles for phone, tablet */

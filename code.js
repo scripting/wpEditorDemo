@@ -23,7 +23,6 @@ var globals = {
 	savingStatusMessage: undefined
 	}
 
-
 //prefs
 	function prefsChanged () {
 		globals.flPrefsChanged = true;
@@ -180,7 +179,6 @@ var globals = {
 				});
 			}
 		}
-
 //commands, button clicks
 	function newDraftCommand () {
 		console.log ("newDraftCommand");
@@ -654,3 +652,4 @@ function startup () {
 			}
 		});
 	}
+

@@ -2,6 +2,8 @@
 
 Fully functional browser-based editor that plugs into WordPress via the wpIdentity API. 
 
+<a href="http://scripting.com/">DW</a>
+
 ### Goals
 
 For developers
@@ -22,11 +24,33 @@ For writers
 
 Assuming you want to create an editor that works alongside WordLand, editing text in Markdown, publishing to WordPress, this is the easiest way to get going. It's basically all the functionality I developed for WordLand put into a package that makes it easy to hook into an existing editor. 
 
-Yes it needs a lot of docs. But it does what it  set out to do -- provides full example code for hooking a JS-based editor to WordPress via wpIdentity. And we can get started with the docs, by people adapting existing editors, and posting issues and we can work them out. 
+Yes it needs a lot of docs. But it does what it  set out to do -- provides full example code for hooking a JS-based editor to WordPress via <a href="https://github.com/scripting/wpIdentity">wpIdentity</a>. And we can get started with the docs, by people adapting existing editors, and posting issues and we can work them out. 
 
 Note I don't take pull requests, preferring well-written bug reports, and I'll make the fixes myself. There are a lot of interdependencies in code like this, and it's unreasonable to expect people to know how things fit together because they found a problem. Also I do all my editing in an outliner, and changes have to be made there before they go out via the flat text files. 
 
 The outline source is also provided, in source.opml. 
 
 I want this to be a big thing. It's a big part of what I did with WordLand, was create a way for lots of editors to work with WordPress posts. This a step in building a social web that has all replaceable parts. WordPress is a very strong foundation to build on. And it has a great API that makes a project like this possible. 
+
+### Demo
+
+This repo contains the source code to a very plain textarea that you can edit text in. 
+
+You can try the demo out here: <a href="https://demo.wpidentity.com/">demo.wpidentity.com</a>.
+
+To get started click the button to log on to WordPress.com. 
+
+Tour of the user interface.
+
+* New post button -- with confirmation it replaces the post you're editing with a new empty post. 
+
+* Choose site button -- you can't publish a post until you've chosen which site it will be posted to. 
+
+* View post button -- if you're published the post you're editing, it will open it in a new browser tab.
+
+* Publish button -- only enabled if you've chosen a site and the text of the post has changed since the last publish.
+
+* Set title menu command -- titles are optional. You can also set the title by clicking in the title area above the editing box.
+
+* Log off WordPress.com -- when you're finished with the demo. 
 

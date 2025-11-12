@@ -1,6 +1,8 @@
 # wpEditorDemo
 
-Fully functional browser-based editor that plugs into WordPress via the wpIdentity API. 
+Fully functional browser-based editor that plugs into WordPress via  <a href="https://github.com/scripting/wpIdentity">wpIdentity</a>. 
+
+From this demo it should be easy to adapt any browser-based text editor to work with WordPress in the same way WordLand does. 
 
 <a href="http://scripting.com/">DW</a>
 

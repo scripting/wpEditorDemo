@@ -1,7 +1,8 @@
 const appConsts = {
 	productName: "demoland",
 	fnamePrefs: "demoland/prefs.json",
-	placeholderForTextarea: "You can enter markdown text here and it should be properly handled by the system."
+	aboutText: "Drafts are saved to the same wpIdentity server that WordLand uses. Choose a site, click the Publish button to post to WordPress. The second box, below the editor, is a live readout of the data we're keeping for the post you're editing. Useful for learning how wpIdentity works.",
+	placeholderForTextarea: "This is a simple HTML textarea. You can write using Markdown. The box below the editor is a live readout of the data we're keeping for the current post."
 	}
 
 var appPrefs = {
@@ -180,6 +181,9 @@ var globals = {
 			}
 		}
 //commands, button clicks
+	function aboutCommand () {
+		alertDialog (appConsts.aboutText);
+		}
 	function newDraftCommand () {
 		console.log ("newDraftCommand");
 		confirmDialog ("Create a new post?", function () {
@@ -371,8 +375,6 @@ var globals = {
 					});
 				}
 			});
-		
-		
 		}
 	function viewPostCommand () {
 		if (globals.theDraft.url === undefined) {
@@ -445,6 +447,13 @@ var globals = {
 			}
 		if ($(idOther).css ("display") != "none") {
 			$(idOther).css ("display", "none")
+			}
+		
+		if (flConnected) { //11/12/25 by DW
+			$("#idMainMenu").css ("display", "block")
+			}
+		else {
+			$("#idMainMenu").css ("display", "none")
 			}
 		}
 	function updateStatus () {

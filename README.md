@@ -38,8 +38,6 @@ I want this to be a big thing. It's a big part of what I did with WordLand, was 
 
 Look for <i>myWordpress</i> in the code. Those are the points where this demo app connects to WordPress via wpIdentity. 
 
-There are quite a few other calls, you can find the source code for the <i>wordPress</i> object in api2.js in wpIdentity. 
-
 Here's a list of these calls, in alphabetic order, in the code as of November 14, 2025.
 
 * myWordpress.addPost
@@ -65,6 +63,8 @@ Here's a list of these calls, in alphabetic order, in the code as of November 14
 * myWordpress.writeUniqueFile
 
 * myWordpress.writeUserDataFile
+
+The source code for the <i>wordPress</i> object is in <a href="https://github.com/scripting/wpIdentity/blob/main/client/api2.js">api2.js</a> in wpIdentity. 
 
 ### Demo
 

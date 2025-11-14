@@ -34,6 +34,38 @@ The outline source is also provided, in source.opml.
 
 I want this to be a big thing. It's a big part of what I did with WordLand, was create a way for lots of editors to work with WordPress posts. This a step in building a social web that has all replaceable parts. WordPress is a very strong foundation to build on. And it has a great API that makes a project like this possible. 
 
+### Code-reading hint
+
+Look for <i>myWordpress</i> in the code. Those are the points where this demo app connects to WordPress via wpIdentity. 
+
+There are quite a few other calls, you can find the source code for the <i>wordPress</i> object in api2.js in wpIdentity. 
+
+Here's a list of these calls, in alphabetic order, in the code as of November 14, 2025.
+
+* myWordpress.addPost
+
+* myWordpress.connectWithWordpress
+
+* myWordpress.getSiteList
+
+* myWordpress.getUserInfoSync
+
+* myWordpress.logOffWordpress
+
+* myWordpress.readDraft
+
+* myWordpress.readUserDataFile
+
+* myWordpress.startup
+
+* myWordpress.updatePost
+
+* myWordpress.userIsSignedIn
+
+* myWordpress.writeUniqueFile
+
+* myWordpress.writeUserDataFile
+
 ### Demo
 
 This repo contains the source code to a very plain textarea that you can edit text in. 

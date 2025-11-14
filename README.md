@@ -40,6 +40,8 @@ This repo contains the source code to a very plain textarea that you can edit te
 
 You can try the demo here: <a href="https://demo.wpidentity.org/">demo.wpidentity.org</a>.
 
+Here's a <a href="https://imgs.scripting.com/2025/11/14/editorDemoScreen.png">screen shot</a>.
+
 To get started click the button to log on to WordPress.com. 
 
 Tour of the user interface.

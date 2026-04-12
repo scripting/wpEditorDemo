@@ -6,6 +6,30 @@ From this demo it should be easy to adapt any browser-based text editor to work 
 
 <a href="http://scripting.com/">DW</a>
 
+### Demo
+
+This repo contains the source code to a very plain editor. 
+
+You can try the demo here: <a href="https://demo.wpidentity.org/">demo.wpidentity.org</a>.
+
+To get started click the button to log on to WordPress.com. 
+
+Tour of the user interface.
+
+* New post button -- with confirmation it replaces the post you're editing with a new empty post. 
+
+* Choose site button -- you can't publish a post until you've chosen which site it will be posted to. 
+
+* View post button -- if you're published the post you're editing, it will open it in a new browser tab.
+
+* Publish button -- only enabled if you've chosen a site and the text of the post has changed since the last publish.
+
+* Set title menu command -- titles are optional. You can also set the title by clicking in the title area above the editing box.
+
+* Log off WordPress.com -- when you're finished with the demo. 
+
+Here's a <a href="https://imgs.scripting.com/2025/11/14/editorDemoScreen.png">screen shot</a>.
+
 ### Goals
 
 For developers
@@ -65,28 +89,4 @@ Here's a list of these calls, in alphabetic order, in the code as of November 14
 * myWordpress.writeUserDataFile
 
 The source code for the <i>wordPress</i> object is in <a href="https://github.com/scripting/wpIdentity/blob/main/client/api2.js">api2.js</a> in wpIdentity. 
-
-### Demo
-
-This repo contains the source code to a very plain textarea that you can edit text in. 
-
-You can try the demo here: <a href="https://demo.wpidentity.org/">demo.wpidentity.org</a>.
-
-To get started click the button to log on to WordPress.com. 
-
-Tour of the user interface.
-
-* New post button -- with confirmation it replaces the post you're editing with a new empty post. 
-
-* Choose site button -- you can't publish a post until you've chosen which site it will be posted to. 
-
-* View post button -- if you're published the post you're editing, it will open it in a new browser tab.
-
-* Publish button -- only enabled if you've chosen a site and the text of the post has changed since the last publish.
-
-* Set title menu command -- titles are optional. You can also set the title by clicking in the title area above the editing box.
-
-* Log off WordPress.com -- when you're finished with the demo. 
-
-Here's a <a href="https://imgs.scripting.com/2025/11/14/editorDemoScreen.png">screen shot</a>.
 

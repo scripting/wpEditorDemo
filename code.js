@@ -1,4 +1,5 @@
 const appConsts = {
+	version: "0.5.0", //4/12/26 by DW
 	productName: "demoland",
 	fnamePrefs: "demoland/prefs.json",
 	aboutText: "Drafts are saved to the same wpIdentity server that WordLand uses. Choose a site, click the Publish button to post to WordPress. The second box, below the editor, is a live readout of the data we're keeping for the post you're editing. Useful for learning how wpIdentity works.",
@@ -499,6 +500,29 @@ var globals = {
 		
 		
 		}
+//check source conflict -- 4/12/26 by DW
+	function checkForSourceConflict (idSite, idPost, callback) { //4/12/26 by DW
+		myWordpress.getSourceFiles (idSite, idPost, function (err, theFiles) {
+			if (err || theFiles.length === 0) {
+				callback (false);
+				return;
+				}
+			const format = theFiles [0].relpath.replace ("source.", "");
+			const flProceed = window.confirm ("There's a '" + format + "' version of this file which you will lose if you edit this file.");
+			if (flProceed) {
+				const foreignNames = [];
+				theFiles.forEach (function (f) {
+					foreignNames.push (f.relpath);
+					});
+				myWordpress.deleteSourceFiles (idSite, idPost, foreignNames, function (err) {
+					callback (false);
+					});
+				}
+			else {
+				callback (true);
+				}
+			});
+		}
 
 function everyMinute () {
 	}
@@ -588,7 +612,7 @@ function startTextarea (userOptions) {
 	}
 
 function startup () {
-	console.log ("startup");
+	console.log ("startup: version == " + appConsts.version);
 	const wpOptions = {
 		serverAddress: "https://wordland.dev/",
 		urlChatLogSocket: "wss://wordland.dev/",
@@ -626,11 +650,27 @@ function startup () {
 									console.log ("startup: err.message == " + err.message);
 									}
 								else {
-									globals.theDraft = theDraft;
-									editorOptions.initialContent = theDraft.content;
-									startTextarea (editorOptions); //start the content from the previous edit
-									updateDraftViewer ();
-									updateTitleViewer ();
+									globals.theDraft = theDraft; //4/12/26 by DW
+									if (theDraft.idSite !== undefined && theDraft.idPost !== undefined) {
+										checkForSourceConflict (theDraft.idSite, theDraft.idPost, function (flCancelled) {
+											if (flCancelled) {
+												globals.theDraft = newDraft ();
+												startTextarea (editorOptions);
+												}
+											else {
+												editorOptions.initialContent = theDraft.content;
+												startTextarea (editorOptions);
+												}
+											updateDraftViewer ();
+											updateTitleViewer ();
+											});
+										}
+									else {
+										editorOptions.initialContent = theDraft.content;
+										startTextarea (editorOptions);
+										updateDraftViewer ();
+										updateTitleViewer ();
+										}
 									}
 								updateForLogin (); 
 								});
@@ -660,4 +700,5 @@ function startup () {
 				}
 			}
 		});
+	hitCounter (); //4/12/26 by DW
 	}

@@ -2,7 +2,7 @@
 
 A fully functional browser-based Gutenberg editor plugged into WordPress via [wpIdentity](https://github.com/scripting/wpIdentity). Users log in with WordPress.com, write in the Gutenberg block editor, and publish to their own WordPress sites.
 
-Current version: v0.4.10
+Current version: v0.4.11
 
 ## Live demo
 

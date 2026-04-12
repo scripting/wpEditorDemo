@@ -1,5 +1,5 @@
 const appConsts = {
-	version: "0.4.10",
+	version: "0.4.11",
 	productName: "gutenbergdemo",
 	fnamePrefs: "gutenbergdemo/prefs.json",
 	fnameSourceGutenberg: "source.gutenberg",

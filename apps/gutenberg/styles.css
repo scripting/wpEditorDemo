@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black');
+
+:root {
+	--font-product-name: "Archivo Black";
+	--bodytext-font-family: "Ubuntu";
+	--bodytext-font-size: 16px;
+	--bodytext-line-height: 150%;
+	--prompt-color: slategray;
+	}
+
+body {
+	background-color: white;
+	}
+.divPageBody {
+	width: 750px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 70px;
+	margin-bottom: 400px;
+	font-family: Arial, sans-serif;
+	font-size: 18px;
+	}
+.spVersion {
+	font-size: 11px;
+	color: #999;
+	float: right;
+	margin-top: 18px;
+	}
+.spMenuProductName {
+	font-family: var(--font-product-name);
+	font-size: 32px;
+	letter-spacing: -1px;
+	margin-top: 4px;
+	opacity: 0.7;
+	color: black;
+	}
+.divSignedOff {
+	margin-top: 200px;
+	line-height: 200%;
+	text-align: center;
+	}
+.divEditor {
+	width: 100%;
+	border: 1px solid silver;
+	background-color: white;
+	max-height: 300px;
+	overflow-y: auto;
+	}
+.divEditor textarea { /* hidden backing store for Gutenberg */
+	display: none;
+	}
+
+.divSitelist {
+	font-size: 15px;
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 1px solid silver;
+	background-color: white;
+	padding: 3px;
+	}
+.divSitelist td {
+	min-width: 100px;
+	}
+.divSitelist .spSitename {
+	cursor: pointer;
+	margin-right: 1em;
+	}
+.divSitelist td:hover {
+	text-decoration: underline;
+	}
+
+.divButtonLine {
+	display: flex;
+	width: 750px;
+	justify-content: space-between;
+	margin-top: 5px;
+	font-size: 14px;
+	}
+.divLeftButtons {
+	flex: 1;
+	}
+.divRightButtons {
+	flex: 1;
+	text-align: right;
+	}
+.divLeftButtons button {
+	margin-right: 10px;
+	}
+.divRightButtons button {
+	margin-left: 10px;
+	}
+
+.spLastSiteChosen {
+	display: inline-block;
+	margin-top: 3px;
+	margin-left: 3px;
+	}
+
+.divDraftDataViewer {
+	margin-top: 25px;
+	width: 100%;
+	white-space: pre;
+	font-size: 14px;
+	line-height: 20px;
+	border: 1px solid silver;
+	overflow: auto;
+	}
+.divEditorContainer {
+	width: 100%;
+	flex: 0 0 750px;
+	}
+.divEditorContainer .divTopLine {
+	display: flex;
+	width: 100%;
+	}
+.divEditorContainer .divTopLine .divTitle {
+	width: 500px;
+	flex: 0 0 500px;
+	font-weight: bold;
+	font-size: 18px;
+	padding: 3px;
+	height: 21px;
+	margin-bottom: 4px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	}
+.divEditorContainer .divTopLine .divTitle:hover {
+	cursor: pointer;
+	}
+.divEditorContainer .divTopLine .divStatus {
+	flex: 1;
+	white-space: nowrap;
+	overflow: hidden;
+	text-align: right;
+	}
+.divStatus .divSavingMessage {
+	font-size: 13px;
+	color: var(--prompt-color);
+	margin-top: 10px;
+	}
+
+/* styles for phone, tablet */
+	@media screen and (max-width: 1024px) {
+		.divPageBody {
+			width: 95%;
+			margin-top: 80px;
+			}
+		}

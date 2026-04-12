@@ -325,4 +325,4 @@ This block markup is:
 - [wpIdentity repo](https://github.com/scripting/wpIdentity) — backend source
 - [api2.js](https://github.com/scripting/wpIdentity/blob/main/client/api2.js) — full browser API source
 - [wpEditorDemo](https://github.com/scripting/wpEditorDemo) — this repo
-- Live demos: root textarea app at [demo.wpidentity.org](https://demo.wpidentity.org), Gutenberg app at [this.how/ai/wpEditorDemo/gutenberg/](https://this.how/ai/wpEditorDemo/gutenberg/)
+- Live demos: root textarea app at [demo.wpidentity.org](https://demo.wpidentity.org), Gutenberg app at [demo.gutenberg.land](https://demo.gutenberg.land/)

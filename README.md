@@ -1,18 +1,32 @@
 # wpEditorDemo
 
-Fully functional browser-based editor that plugs into WordPress via  <a href="https://github.com/scripting/wpIdentity">wpIdentity</a>. 
+Fully functional browser-based editors that plugs into WordPress via  <a href="https://github.com/scripting/wpIdentity">wpIdentity</a>. 
 
-From this demo it should be easy to adapt any browser-based text editor to work with WordPress in the same way WordLand does. 
+This is the same API WordLand uses to connect to WordPress and any app that also supports this interface can replace WordLand. 
+
+From these demos it should be easy to adapt any browser-based text editor to work with WordPress in the same way WordLand does. 
+
+I want to create a community of writing tools that work with WordPress. WordLand was developed to help seed the process. 
 
 <a href="http://scripting.com/">DW</a>
 
-### Demo
+Updates as of April 2026
 
-This repo contains the source code to a very plain editor. 
+1. We now have a third app, one that lets the user edit their posts with the Gutenberg editor. 
 
-You can try the demo here: <a href="https://demo.wpidentity.org/">demo.wpidentity.org</a>.
+2. I'm doing this project with Claude.ai. It's my first project managed with an AI app. It's a great experience, I plan to do more of this kind of work, after we're done with this adaptation. 
 
-To get started click the button to log on to WordPress.com. 
+3. There's a new apps folder in this repo, and the first new app, for <a href="https://github.com/scripting/wpEditorDemo/tree/main/apps/gutenberg">Gutenberg</a>. The app and the docs were written by Claude.ai. I find its code very clear and understandable, and it's amazing to me that I barely had to even look at the code. It was adapted from the original demo app which I wrote in full myself.
+
+4. There's a <a href="https://github.com/scripting/wpEditorDemo/tree/main/docs">docs folder</a> containing two files, an explainer for developers and one for their AI assistants. Both were written by Claude.ai. The idea of instructions for your AI helper are a new idea as far as I know. I plan to include one of these docs with every project I work on. 
+
+### Demos
+
+This repo contains the source code to a very plain editor and a Gutenberg-based editor. 
+
+You can try the demo for the first app here: <a href="https://demo.wpidentity.org/">demo.wpidentity.org</a>.
+
+And for the Gutenberg editor: <a href="https://demo.gutenberg.land/">demo.gutenberg.land</a>.
 
 Tour of the user interface.
 
@@ -68,7 +82,11 @@ Here's a list of these calls, in alphabetic order, in the code as of November 14
 
 * myWordpress.connectWithWordpress
 
+* myWordpress.deleteSourceFiles
+
 * myWordpress.getSiteList
+
+* myWordpress.getSourceFiles
 
 * myWordpress.getUserInfoSync
 

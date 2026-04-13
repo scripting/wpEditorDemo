@@ -50,9 +50,9 @@ For developers
 
 1. API does all the networking, you can focus on editing.
 
-3. Interop is easy because all editors use Markdown.
+2. Interop is easy because all editors use Markdown.
 
-2. Users control the storage, you don't have to be a reseller, stick to what you do best.
+3. Users control the storage, you don't have to be a reseller, stick to what you do best.
 
 For writers
 

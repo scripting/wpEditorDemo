@@ -56,8 +56,7 @@ No build step required for any of this.
 ```javascript
 myWordpress = new wordpress ({
 	serverAddress: "https://wordland.dev/",
-	urlChatLogSocket: "wss://wordland.dev/",
-	flMarkdownProcess: false
+	urlChatLogSocket: "wss://wordland.dev/"
 	});
 
 myWordpress.startup (function (err) {
@@ -308,7 +307,7 @@ Gutenberg outputs HTML with block grammar comments:
 ```
 
 This block markup is:
-- Sent as `content` to `addPost` / `updatePost` — WordPress renders it natively (`flMarkdownProcess: false`)
+- Sent as `content` to `addPost` / `updatePost` — WordPress renders it natively
 - Saved as-is in `source.gutenberg` (as JSON) on every autosave and publish
 - Converted to markdown via `blocksToMarkdown()` before saving to `draft.json`
 

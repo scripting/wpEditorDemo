@@ -1,5 +1,5 @@
 const appConsts = {
-	version: "0.4.11",
+	version: "0.4.12",
 	productName: "gutenbergdemo",
 	fnamePrefs: "gutenbergdemo/prefs.json",
 	fnameSourceGutenberg: "source.gutenberg",
@@ -590,8 +590,7 @@ function startup () {
 	console.log ("startup");
 	const wpOptions = {
 		serverAddress: "https://wordland.dev/",
-		urlChatLogSocket: "wss://wordland.dev/",
-		flMarkdownProcess: false
+		urlChatLogSocket: "wss://wordland.dev/"
 		}
 	myWordpress = new wordpress (wpOptions);
 	myWordpress.startup (function (err) {

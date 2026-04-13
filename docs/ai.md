@@ -19,7 +19,7 @@ All apps point at `https://wordland.dev/` — a shared wpIdentity instance. Deve
 
 Loaded from: `//s3.amazonaws.com/scripting.com/code/wpidentity/client/api2.js`
 
-Instantiate: `myWordpress = new wordpress ({ serverAddress: "https://wordland.dev/", urlChatLogSocket: "wss://wordland.dev/", flMarkdownProcess: false })`
+Instantiate: `myWordpress = new wordpress ({ serverAddress: "https://wordland.dev/", urlChatLogSocket: "wss://wordland.dev/" })`
 
 All calls follow Node-style `callback (err, data)` except where noted.
 
@@ -162,7 +162,7 @@ Gutenberg outputs HTML with block grammar comments:
 ```
 
 This block markup is:
-- Sent as `content` to `addPost` / `updatePost` — WordPress renders it natively (`flMarkdownProcess: false`)
+- Sent as `content` to `addPost` / `updatePost` — WordPress renders it natively
 - Saved as-is in `source.gutenberg` (as JSON) on every autosave and publish
 - Converted to markdown via `blocksToMarkdown()` before saving to `draft.json`
 

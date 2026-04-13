@@ -190,6 +190,14 @@ body {
 	margin-top: 10px;
 	}
 
+/* 4/13/26; 8:14:43 AM by DW */
+	.spVersion {
+		font-size: 11px;
+		color: darkgray;
+		float: right;
+		margin-top: 18px;
+		}
+
 /* styles for phone, tablet */
 	@media screen and (max-width: 1024px) {
 		.divPageBody {

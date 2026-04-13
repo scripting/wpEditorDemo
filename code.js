@@ -1,5 +1,5 @@
 const appConsts = {
-	version: "0.5.0", //4/12/26 by DW
+	version: "0.5.1", //4/12/26 by DW
 	productName: "demoland",
 	fnamePrefs: "demoland/prefs.json",
 	aboutText: "Drafts are saved to the same wpIdentity server that WordLand uses. Choose a site, click the Publish button to post to WordPress. The second box, below the editor, is a live readout of the data we're keeping for the post you're editing. Useful for learning how wpIdentity works.",
@@ -613,10 +613,10 @@ function startTextarea (userOptions) {
 
 function startup () {
 	console.log ("startup: version == " + appConsts.version);
+	$(".spVersion").text ("v" + appConsts.version); //4/13/26 by DW
 	const wpOptions = {
 		serverAddress: "https://wordland.dev/",
 		urlChatLogSocket: "wss://wordland.dev/",
-		flMarkdownProcess: false //if true it would convert content to html when we publish -- 10/10/24 by DW
 		}
 	myWordpress = new wordpress (wpOptions);
 	myWordpress.startup (function (err) {
